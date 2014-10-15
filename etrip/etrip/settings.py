@@ -22,7 +22,7 @@ NEWSPIDER_MODULE = 'etrip.spiders'
 COOKIES_ENABLED = False
 
 # Avoid hitting etrip too hard by having a delay between consecutive requests
-DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 10
 
 # The user agent will be changed from a pool of valid user agents, this is just
 # the default user agent
