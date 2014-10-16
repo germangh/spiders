@@ -17,5 +17,5 @@ Run the crawler:
 
 ````
 cd etrip
-scrapy crawl etrip
+scrapy crawl etrip -o 'Amsterdam.csv'
 ````
