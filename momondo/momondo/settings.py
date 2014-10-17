@@ -26,8 +26,8 @@ DOWNLOAD_DELAY = 5
 
 # Automatically renew TOR IP after TOR_RENEW requests. Wait for TOR_WAIT
 # seconds for the renewal to take place
-TOR_RENEW = 40
-TOR_WAIT = 10     # in seconds
+TOR_RENEW = 20
+TOR_WAIT = 15     # in seconds
 
 # The user agent will be changed from a pool of valid user agents, this is just
 # the default user agent

@@ -22,13 +22,15 @@ class MomondoSpider(scrapy.Spider):
         item['hotel_id'] = response.xpath(
             '//div[@class="hc_f_t_btn3 hc_f_submit"]').re(
                 '(\d{5,})')
+        if len(item['hotel_id']) < 1:
+            item['hotel_id'] = None
+
         try:
             item['description'] = response.xpath(
                 '//p[contains(@id, "hc_htl_desc")]').re(
                 'HC.Hotel.formatHotelDescription\(.(.+).\)')[0]
         except IndexError:
-            # Empty description is not the sames a "missing value". The latter
-            # are to indicate that we have not crawled that hotel yet.
+            # Hotel has no description
             item['description'] = ''
 
         try:
