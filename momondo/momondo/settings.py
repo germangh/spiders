@@ -22,7 +22,12 @@ NEWSPIDER_MODULE = 'momondo.spiders'
 COOKIES_ENABLED = False
 
 # Avoid hitting momondo too hard by having a delay between consecutive requests
-DOWNLOAD_DELAY = 15
+DOWNLOAD_DELAY = 3
+
+# Retry after renewing Tor's exit point
+RETRY_ENABLED = True
+RETRY_TIMES = 3
+RETRY_WAIT = 10     # in seconds
 
 # The user agent will be changed from a pool of valid user agents, this is just
 # the default user agent
@@ -36,6 +41,7 @@ HTTP_PROXY = 'http://127.0.0.1:8123'
 DOWNLOADER_MIDDLEWARES = {
     'momondo.middlewares.RandomUserAgentMiddleware': 400,
     'momondo.middlewares.ProxyMiddleware': 410,
+    'momondo.middlewares.TorRetryMiddleware': 420,
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware':
         None
     # Disable compression middleware, so the actual HTML pages are cached
