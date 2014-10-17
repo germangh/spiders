@@ -20,7 +20,7 @@ You will also need to start the Polipo proxy server:
 
 ````
 polipo
-`````
+````
 
 Finally, you can run a crawler (e.g. the momondo crawler) using:
 
