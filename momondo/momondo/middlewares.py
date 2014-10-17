@@ -34,7 +34,7 @@ class ProxyMiddleware(object):
         request.meta['proxy'] = self.crawler.settings.get('HTTP_PROXY')
 
 
-class TorRetryMiddleware(object):
+class TorRenewMiddleware(object):
 
     def __init__(self, counter=0):
         self.crawler = None
@@ -50,7 +50,10 @@ class TorRetryMiddleware(object):
         self.counter += 1
         if self.counter > self.crawler.settings.getint('TOR_RENEW'):
             # Try renewing Tor's exit point and try again
+            print("##### RENEWING TOR EXIT POINT!")
             pidof = sh.pidof
             kill = sh.kill
             kill('-s', 'SIGHUP', pidof('tor').rstrip('\n'))
             time.sleep(self.crawler.settings.getint('TOR_WAIT'))
+            self.counter = 0
+            print("##### JUST RENEWED TOR EXIT POINT")

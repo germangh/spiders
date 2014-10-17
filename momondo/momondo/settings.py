@@ -26,7 +26,7 @@ DOWNLOAD_DELAY = 5
 
 # Automatically renew TOR IP after TOR_RENEW requests. Wait for TOR_WAIT
 # seconds for the renewal to take place
-TOR_RENEW = 50
+TOR_RENEW = 40
 TOR_WAIT = 10     # in seconds
 
 # The user agent will be changed from a pool of valid user agents, this is just
@@ -40,7 +40,7 @@ HTTP_PROXY = 'http://127.0.0.1:8123'
 
 DOWNLOADER_MIDDLEWARES = {
     # Now we just run a cron job renewing the IP every now and then
-    'momondo.middlewares.TorRetryMiddleware': 390,
+    'momondo.middlewares.TorRenewMiddleware': 390,
     'momondo.middlewares.RandomUserAgentMiddleware': 400,
     'momondo.middlewares.ProxyMiddleware': 410,
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware':
